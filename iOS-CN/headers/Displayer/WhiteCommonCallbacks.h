@@ -84,11 +84,6 @@ NS_ASSUME_NONNULL_BEGIN
 
  如果你需要关闭该回调，可以将 `log` 设为 `NO`。
 
- **Note:**
- 
- 即使将 `log` 设为 `NO`，SDK 会停止通过 `logger` 回调返回本地调试日志，但仍然会通过该回调返回 [`video-js-plugin`](https://github.com/netless-io/whiteboard-demo/tree/master/packages/video-js-plugin) 插件的日志信息。
-
-
  @param dict 字典结构的日志消息，每条日志消息包含以下 key：
 
  - `funName`：功能名称。

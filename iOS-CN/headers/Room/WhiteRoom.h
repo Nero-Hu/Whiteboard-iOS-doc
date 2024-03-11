@@ -230,6 +230,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)insertText:(CGFloat)x y:(CGFloat)y textContent:(NSString *)textContent completionHandler:(void (^) (NSString * textId))completionHandler;
 
+/**
+ * 更新指定文本的内容。
+ * @param textId 文字标识符。
+ * @param textContent 文字内容。
+ */
+- (void)updateText:(NSString *)textId textContent:(NSString *)textContent;
+
+
 #pragma mark - Image API
 
 /**
@@ -619,6 +627,69 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface WhiteRoom(MainView)
+
+/**
+ * 插入小窗应用。
+ * 
+ * 多窗口模式下，PPT 或自定义插件等可以作为小窗应用插入白板，在一个新的窗口中展示。
+ * 
+ * @param appParams 小窗应用属性，详见 [WhiteAppParam](WhiteAppParam)。
+ * @param completionHandler 方法调用结果：
+ * 
+ * - 如果方法调用成功，则返回 `appId`，即小窗应用 ID。
+ * - 如果方法调用失败，则返回错误信息。
+ *
+ * @note 多次插入同一个小窗应用返回的 `appId` 为 `nil`，表示插入失败。
+ */
+- (void)addApp:(WhiteAppParam *)appParams completionHandler:(void (^)(NSString *appId))completionHandler;
+
+/**
+ * 关闭指定小窗应用的窗口。
+ * 
+ * 该方法仅在多窗口模式下有效, 无论应用 ID 是否有效都会触发回调。
+ *
+ * @param appId 小窗应用 ID。
+ * @param completionHandler 方法调用结果：
+ * 
+ * - 如果方法调用成功，则窗口关闭。
+ * - 如果方法调用失败，则返回错误信息。
+ */
+- (void)closeApp:(NSString *)appId completionHandler:(void (^)(void))completionHandler;
+
+/**
+ * 切换聚焦窗口为指定小窗应用的窗口。
+ * 
+ * 该方法仅在多窗口模式下有效。
+ *
+ * @param appId 小窗应用 ID。
+ */
+- (void)focusApp:(NSString *)appId;
+
+/** 查询所有小窗应用的信息。
+ * 
+ *  该方法仅在多窗口下有效。
+ * 
+ * @param completionHandler 查询结果回调。
+  * 
+ * - 如果方法调用成功，则返回一个以应用 ID 为键，包含所有小窗应用信息的字典。详见 [WhiteAppSyncAttributes](WhiteAppSyncAttributes)。
+ * - 如果方法调用失败，则返回错误信息。
+ *
+*/
+- (void)queryAllAppsWithCompletionHandler:(void (^)(NSDictionary<NSString *, WhiteAppSyncAttributes *> *apps, NSError * _Nullable error))completionHandler;
+
+/** 查询指定小窗应用的信息。
+ * 
+ *  该方法仅在多窗口下有效。
+ * 
+ * @param appId 小窗应用 ID。
+ * @param completionHandler 查询结果回调。
+ * 
+ * - 如果方法调用成功，则返回小窗应用相关信息，详见 [WhiteAppSyncAttributes](WhiteAppSyncAttributes)。
+ * - 如果方法调用失败，则返回错误信息。
+ *
+ */
+- (void)queryApp:(NSString *)appId completionHandler:(void (^)(WhiteAppSyncAttributes *appParam, NSError * _Nullable error))completionHandler;
+
 
 /**
  * 发送文档操作事件。

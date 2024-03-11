@@ -6,6 +6,82 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 本文提供声网互动白板 iOS SDK 的发版说明。
 
+<VersionSection version="2.16.88 版">
+
+该版本于 2024 年 3 月 x 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>小窗应用管理</ListTitle>
+
+在多窗口模式下，SDK 支持以新建窗口的方式插入 PPT 或白板插件，它们统称为小窗应用。该版本起，`WhiteRoom` 类新增以下方法用于在多窗口模式下管理小窗应用：
+
+- `addApp`：插入小窗应用，并返回应用 ID。
+- `closeApp`：关闭指定小窗应用的窗口。
+- `focusApp`：切换聚焦窗口为指定小窗应用的窗口。
+- `queryApp`：查询指定小窗应用的信息。
+- `queryAllAppsWithCompletionHandler`：查询当前所有小窗应用的信息。
+
+<ListTitle>白板工具自定义</ListTitle>
+
+`WhiteMemberState` 和 `WhiteReadonlyMemberState` 新增以下属性用于自定义白板工具：
+
+- `textColor`：修改文本工具中文字的颜色。
+- `pencilEraserSize`：修改铅笔橡皮工具的尺寸。
+
+<ListTitle>PPT 渲染配置新增</ListTitle>
+
+PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
+
+- `minFPS`：设置 PPT 动画的最小帧率。
+- `maxFPS`：设置 PPT 动画的最大帧率。
+- `resolution`：设置 PPT 渲染分辨倍率。
+- `maxResolutionLevel`：设置 PPT 最大分辨率。
+- `bgColor`：设置 PPT 动画的背景色。
+- `forceCanvas`：是否强制使用 2D 渲染，默认不开启。
+- `enableGlobalClick`：是否可以通过点击 PPT 画面执行下一步功能，默认开启。
+
+<ListTitle>文本更新</ListTitle>
+
+新增 `updateText` 方法, 用于更新调用 `insertText` 插入的文本。
+
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+该版本修复了以下问题：
+
+- `WKWebView` 在某些异常情况下可能导致无法打开 `indexDB`。
+- 配置 `WhiteWindowParams.fullscreen` 后，第二次打开 App 没有全屏。
+- 配置 `WhiteWindowParams.fullscreen` 后偶现短暂的闪烁。
+- 使用淡入淡出动画时偶现闪烁。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- `addApp`
+- `closeApp`
+- `focusApp`
+- `queryApp`
+- `queryAllAppsWithCompletionHandler`
+- `WhiteAppParam`
+- `WhiteAppSyncAttributes`
+- `WhiteMemberState` 和 `WhiteReadonlyMemberState` 新增
+  - `textColor`
+  - `pencilEraserSize`
+- `updateText`
+- `WhiteSlideAppParams` 新增
+  - `minFPS`
+  - `maxFPS`
+  - `resolution`
+  - `maxResolutionLevel`
+  - `bgColor`
+  - `forceCanvas`
+  - `enableGlobalClick`
+
+
+</VersionSection>
+
 <VersionSection version="2.16.62 版">
 
 该版本于 2023 年 8 月 31 日发布。

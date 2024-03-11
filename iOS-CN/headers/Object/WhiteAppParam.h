@@ -1,0 +1,61 @@
+//
+//  WhiteAppParam.h
+//
+//  Created by yleaf on 2021/8/21.
+//
+
+#import "WhiteObject.h"
+#import "WhiteScene.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+
+// @interface WhiteAppOptions : WhiteObject
+
+// @property (nonatomic, nullable, copy) NSString *scenePath;
+// @property (nonatomic, nullable, copy) NSString *title;
+// @property (nonatomic, nullable, strong) NSArray<WhiteScene *> *scenes;
+
+// @end
+
+/** 多窗口模式下，小窗应用的配置参数项。
+ * 
+ * 直接使用类方法生成，不需要主动配置各个属性值 。
+ */
+@interface WhiteAppParam : WhiteObject
+
+/** 小窗应用类型。 */
+@property (nonatomic, copy, readonly) NSString *kind;
+/** 小窗应用的必须配置项。 */
+@property (nonatomic, strong, readonly) WhiteAppOptions *options;
+/** 小窗应用的额外可选配置项。 */
+@property (nonatomic, copy, readonly) NSDictionary *attrs;
+
+// /*
+//  创建一个 PPT 窗口。
+//  如果你使用的转码结果中带有 `uuid` 和 `prefix`，使用该方法生成 `WhiteAppParam`
+//  uuid   字段对应的是 taskId 参数
+//  prefix 字段对应的是 url 参数
+//  推荐使用
+//  */
+// + (instancetype)createSlideApp:(NSString *)dir taskId:(NSString *)taskId url:(NSString *)url title:(NSString *)title;
+
+// /*
+//  创建一个ppt窗口。
+//  如果你使用的转码结果中带有 convertedFileList，使用该方法生成 WhiteAppParam
+//  推荐使用
+//  */
+// + (instancetype)createSlideApp:(NSString *)dir scenes:(NSArray <WhiteScene *>*)scenes title:(NSString *)title;
+// + (instancetype)createDocsViewerApp:(NSString *)dir scenes:(NSArray <WhiteScene *>*)scenes title:(NSString *)title;
+// + (instancetype)createMediaPlayerApp:(NSString *)src title:(NSString *)title;
+
+// /** 特定的App，一般用来创建自定义的App插入参数
+//  @param kind 注册App时使用的kind
+//  @param options 详见[WhiteAppOptions](WhiteAppOptions)
+//  @param attrs 初始化App的参数，按需填
+//  */
+// - (instancetype)initWithKind:(NSString *)kind options:(WhiteAppOptions *)options attrs:(NSDictionary *)attrs;
+
+@end
+
+NS_ASSUME_NONNULL_END
