@@ -6,6 +6,31 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 本文提供声网互动白板 iOS SDK 的发版说明。
 
+## 2.16.96 版
+
+该版本于 2024 年 6 月 x 日发布。
+
+#### 新增特性
+
+**接入域名预选**
+
+该版本新增 `WhiteSDK.prepareWhiteConnectionForAppId` 方法，用于提前选择最佳接入域名，用于加快用户首次加入白板方间时的连接速度。
+
+**白板窗口样式覆盖**
+
+该版本新增 `WhiteWindowParams.overwriteStyles`，用于使用 CSS 覆盖白板窗口样式，实现自定义 UI 细节。
+
+#### 问题修复
+
+该版本修复了 `drawOnlyPencil` 在 iOS 17 及以上版本失效的问题。
+
+#### API 变更
+
+**新增**
+
+- `prepareWhiteConnectionForAppId`
+- `overwriteStyles`
+
 <VersionSection version="2.16.88 版">
 
 该版本于 2024 年 3 月 x 日发布。

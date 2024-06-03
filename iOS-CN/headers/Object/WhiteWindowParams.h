@@ -31,6 +31,8 @@ FOUNDATION_EXPORT WhitePrefersColorScheme const WhitePrefersColorSchemeDark;
 // @property (nonatomic, assign) BOOL debug;
 // /** 暗黑模式, 本地效果， 不会同步到远端， 默认Light, 设置auto只有在iOS13以上才会生效*/
 // @property (nonatomic, copy) WhitePrefersColorScheme prefersColorScheme;
+/** 使用 CSS 覆盖白板窗口样式。 */
+@property (nonatomic, copy) NSString *overwriteStyles;
 
 @end
 

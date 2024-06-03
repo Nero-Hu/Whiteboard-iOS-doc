@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config commonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callback;
 
 /**
- 该方法已废弃。请使用 initWithWhiteBoardView:config:commonCallbackDelegate: 和 initWithWhiteBoardView:config:commonCallbackDelegate:audioMixerBridgeDelegate: 方法。
+ @deprecated 该方法已废弃。请使用 `initWithWhiteBoardView:config:commonCallbackDelegate:` 或 `initWithWhiteBoardView:config:commonCallbackDelegate:audioMixerBridgeDelegate:` 方法。
 
  初始化 `WhiteSDK` 对象。
 
@@ -49,6 +49,15 @@ NS_ASSUME_NONNULL_BEGIN
  @param config        白板 SDK 对象配置，详见 [WhiteSdkConfiguration](WhiteSdkConfiguration)。
  */
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config DEPRECATED_MSG_ATTRIBUTE("initWithWhiteBoardView:config:commonCallbackDelegate");
+
+/**
+ 提前选择最佳接入域名，用于加快用户首次连接速度。
+ @param appId 白板项目的唯一标识，详见[获取白板项目的 App Identifier](/doc/whiteboard/ios/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
+ @param region 需要选择的数据中心，详见 [WhiteRegionKey](WhiteRegionKey)。
+ @param expireSeconds 数据缓存时间 (s)，可为空，默认为 24 小时。
+ @param superView 挂载的父视图，可为空，默认为 `UIApplication.shared.keyWindow`。
+ */
++ (void)prepareWhiteConnectionForAppId:(NSString *)appId region:(WhiteRegionKey)region expireSeconds:(NSNumber * _Nullable )expireSeconds attachingSuperView: (UIView * _Nullable)superView;
 
 /**
  混音设置。
