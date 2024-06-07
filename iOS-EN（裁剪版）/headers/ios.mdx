@@ -1,5 +1,30 @@
 <PlatformWrapper platform="ios">
 
+## v2.16.96
+
+This version was released on June x, 2024.
+
+#### New Features
+
+**Domain preselection**
+
+This version adds the `WhiteSDK.prepareWhiteConnectionForAppId` method to preselect the optimal access domain, which can improve the connection speed when users join a whiteboard room for the first time.
+
+**Whiteboard window style override**
+
+This version adds the `WhiteWindowParams.overwriteStyles` method to override whiteboard window styles using CSS, allowing for customization of UI details.
+
+#### Bug Fixes
+
+This version fixes the issue where `drawOnlyPencil` does not work on iOS 17 and above.
+
+#### API Changes
+
+**Added**
+
+- `prepareWhiteConnectionForAppId`
+- `overwriteStyles`
+
 ## v2.16.88
 
 This version was released on April x, 2024.

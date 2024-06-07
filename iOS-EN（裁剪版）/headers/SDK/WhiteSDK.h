@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config commonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callback;
 
 /**
- This method is deprecated. Use initWithWhiteBoardView:config:commonCallbackDelegate: and initWithWhiteBoardView:config:commonCallbackDelegate:audioMixerBridgeDelegate: instead.
+ @deprecated This method is deprecated. Use `initWithWhiteBoardView:config:commonCallbackDelegate:` and `initWithWhiteBoardView:config:commonCallbackDelegate:audioMixerBridgeDelegate:` instead.
 
  Initializes the `WhiteSDK` object.
 
@@ -55,6 +55,16 @@ NS_ASSUME_NONNULL_BEGIN
  @param config        Configurations for the `WhiteSDK` object. See [WhiteSdkConfiguration](WhiteSdkConfiguration).
  */
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config DEPRECATED_MSG_ATTRIBUTE("initWithWhiteBoardView:config:commonCallbackDelegate");
+
+/**
+* Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.
+*
+* @param appId The unique identifier for a whiteboard project. See [Get security credentials for your whiteboard project](https://docs.agora.io/en/interactive-whiteboard/develop/enable-whiteboard?platform=android#get-security-credentials-for-your-whiteboard-project) for details.
+* @param region The data center to select. See [WhiteRegionKey](WhiteRegionKey) for details.
+* @param expireSeconds The data cache time (s). Can be nil. The default is 24 hours.
+* @param superView The parent view to which the view is attached. Can be nil. The default is `UIApplication.shared.keyWindow`.
+*/
++ (void)prepareWhiteConnectionForAppId:(NSString *)appId region:(WhiteRegionKey)region expireSeconds:(NSNumber * _Nullable )expireSeconds attachingSuperView: (UIView * _Nullable)superView;
 
 /**
  Sets audio mixing.

@@ -21,6 +21,8 @@ FOUNDATION_EXPORT WhitePrefersColorScheme const WhitePrefersColorSchemeDark;
 
 /** Whether the window is displayed in fullscreen mode. The default value is `NO`. */
 @property (nonatomic, assign) BOOL fullscreen;
+/** Use CSS to override the style of whiteboard windows. */
+@property (nonatomic, copy) NSString *overwriteStyles;
 
 @end
 
